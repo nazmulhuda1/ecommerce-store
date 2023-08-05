@@ -138,6 +138,12 @@ h4 {
     gap: 1em;
 }
 
+/* .object-cover {
+    background-position: center;
+    background-size: cover;
+    object-fit: cover;
+} */
+
 .main-links a:hover {
     color: var(--secendary-color);
 }
@@ -625,7 +631,58 @@ form.search button:hover {
 }
 
 /* =====================================* 
+* 02. SLIDER 
 *===================================== */
+
+
+.slider .item {
+    position: relative;
+    height: 474px;
+}
+
+.slider .item::before {
+    content: '';
+    position: absolute;
+    top: 30%;
+    left: 0;
+    width: 450px;
+    height: 300px;
+    background: var(--white-color);
+    z-index: 1;
+    filter: blur(50px);
+    opacity: .8;
+}
+
+.slider .text-content {
+    position: absolute;
+    height: var(--percent-100);
+    justify-content: flex-end;
+    padding: 0 0 10% 10%;
+    z-index: 1;
+    top: 0;
+}
+
+.slider h4 {
+    font-size: var(--font-small);
+    font-weight: var(--fw7);
+    width: fit-content;
+    padding: 4px 10px;
+    background: var(--dark-color);
+    color: var(--white-color);
+    border-radius: 4px;
+}
+
+.text-content :where(h2, h3) span:first-child {
+    font-weight: var(--fw3);
+    columns: var(--light-text-color);
+}
+
+.text-content :where(h2, h3) span:last-child {
+    color: var(--secendary-dark-color);
+    text-transform: uppercase;
+    letter-spacing: -1px;
+}
+
 
 /* =====================================* 
 *===================================== */
@@ -849,4 +906,9 @@ form.search button:hover {
         display: flex;
     }
 
+    /* slider */
+    .slider .container>.wrapper {
+        width: calc(100% - (300px + 2rem));
+        margin-left: auto;
+    }
 }
