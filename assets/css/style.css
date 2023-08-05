@@ -237,7 +237,7 @@ h4 {
 /* ------------------
 * header section
 *------------------- */
-header li>a {
+:where(.off-canvas, header) li>a {
     display: flex;
     position: relative;
     line-height: inherit;
@@ -273,11 +273,11 @@ header li>a {
     display: none;
 }
 
-.header-top .right ul ul li a {
+:where(.header-top, .thetop-nav) .right ul ul li a {
     padding: 0.25em 1em;
 }
 
-.header-top .right ul ul li.current a {
+:where(.header-top, .thetop-nav) .right ul ul li.current a {
     background-color: var(--border-color);
 }
 
@@ -299,6 +299,7 @@ header li>a {
     display: flex;
     padding: 0.25rem;
     margin-right: 0.5rem;
+    cursor: pointer;
 }
 
 .logo a {
@@ -425,6 +426,14 @@ nav .fly-item {
     align-items: center;
 }
 
+.dpt-menu .has-child:hover ul {
+    display: block;
+}
+
+.dpt-menu .has-child li a:hover {
+    text-decoration: underline;
+}
+
 /* = 1. Header ==================================== 
 *      d. Search form
 *===================================== */
@@ -473,8 +482,147 @@ form.search button:hover {
     background: var(--dark-color);
 }
 
-/* =====================================* 
+/* = 1. Header ==================================== 
+*      e. Responsive Menu - off canvas
 *===================================== */
+.site-off {
+    position: fixed;
+    width: 345px;
+    height: var(--percent-100);
+    background: var(--white-color);
+    overflow-y: auto;
+    z-index: 1000;
+    transform: translateX(-100%);
+    visibility: hidden;
+    transition: transform .4s, visibility .4s;
+    will-change: transform, visibility;
+}
+
+.showmenu .site-off {
+    transform: translateX(0);
+    visibility: visible;
+    transform: transform .4s 0s, visibility 0s 0s;
+}
+
+.off-canvas {
+    width: var(--percent-100);
+    height: var(--percent-100);
+    touch-action: auto;
+    padding: 1.5rem;
+}
+
+.off-canvas .canvas-head {
+    color: var(--white-color);
+    justify-content: space-between;
+    padding: 1.5rem;
+    margin: -1.5rem -1.5rem 1.5rem;
+    background: var(--secendary-dark-color);
+    border-bottom-right-radius: 160px 25px;
+}
+
+.off-canvas .canvas-head .logo {
+    z-index: 10;
+    position: relative;
+}
+
+.off-canvas .canvas-head .logo a {
+    color: var(--white-color);
+
+}
+
+.off-canvas .canvas-head .logo .circle {
+    opacity: .75;
+}
+
+.t-close {
+    font-size: 1.25rem;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--percent-100);
+    background: var(--secendary-dark-color);
+    color: var(--white-color);
+    transition: var(--trans-background-color);
+    cursor: pointer;
+}
+
+.t-close:hover {
+    background-color: var(--white-color);
+    color: var(--secendary-dark-color);
+    opacity: .7;
+}
+
+.off-canvas .dpt-head {
+    font-size: var(--font-small);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    background: var(--light-bg-color);
+    border-radius: 7px 7px 0 0;
+}
+
+.off-canvas .has-child> :where(ul, .mega) {
+    font-size: var(--font-small);
+    font-weight: var(--fw3);
+    line-height: 28px;
+    padding-left: 3rem;
+
+    height: auto;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .3s cubic-bezier(0.215, 0.610, 0.355, 1);
+}
+
+.off-canvas .expand>:where(ul, .mega) {
+    max-height: 2000px;
+}
+
+.off-canvas .thetop-nav ul,
+.off-canvas nav>ul {
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: var(--font-small);
+    line-height: 36px;
+    padding-top: 1.25rem;
+    margin: 1.25rem 0;
+    border-top: 1px solid var(--border-color);
+}
+
+.off-canvas nav .mega {
+    padding: 0;
+}
+
+.off-canvas nav .mega .products {
+    display: none;
+}
+
+.off-canvas .has-child .icon-small {
+    padding: 0.5rem;
+    line-height: initial;
+}
+
+.off-canvas .dpt-menu .icon-small i {
+    transform: rotate(90deg);
+}
+
+.off-canvas .has-child {
+    width: var(--percent-100);
+}
+
+.off-canvas .thetop-nav .right>ul> :where(:nth-child(4), li:nth-child(5))>a {
+    display: none;
+}
+
+.off-canvas .thetop-nav .right ul ul {
+    display: flex;
+    flex-direction: row;
+}
+
+.off-canvas .thetop-nav .right ul ul li a {
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    line-height: 16px;
+    margin: 0 0.5rem 0.5rem 0;
+}
 
 /* =====================================* 
 *===================================== */
@@ -642,6 +790,63 @@ form.search button:hover {
         font-weight: var(--fw5);
         padding: 0 1.5rem;
         border-bottom: 1px solid var(--border-color);
+    }
+
+    .dpt-menu .has-child>ul,
+    .dpt-menu .mega {
+        position: absolute;
+        top: 0;
+        left: var(--percent-100);
+        width: var(--percent-100);
+        height: auto;
+        min-height: var(--percent-100);
+        padding: 1.5rem;
+        font-size: var(--font-small);
+        line-height: 2.5rem;
+        border: 1px solid var(--border-color);
+        border-top: 0;
+        display: none;
+        background-position: right bottom;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    /* Showing */
+
+
+    .dpt-menu .beauty ul {
+        background-image: url(../img/menu/menu_bg1.jpg);
+    }
+
+    .dpt-menu .electric ul {
+        background-image: url(../img/menu/menu_bg2.jpg);
+    }
+
+    .dpt-menu .fashion ul {
+        background-image: url(../img/menu/menu_bg3.jpg);
+    }
+
+    .dpt-menu .homekit .mega {
+        background-image: url(../img/menu/menu_bg4.jpg);
+    }
+
+    .dpt-menu .has-child>:where(ul, .mega)::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(90deg, rgba(225, 225, 225, 1)0%, rgba(225, 225, 225, .35));
+    }
+
+    .dpt-menu .mega {
+        width: auto;
+        min-width: var(--percent-100);
+    }
+
+    .dpt-menu .has-child:hover .mega {
+        display: flex;
     }
 
 }
