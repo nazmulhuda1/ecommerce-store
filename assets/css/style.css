@@ -1513,7 +1513,7 @@ form.search button:hover {
 }
 
 .products .actions .button-cat button {
-    width: var(--percent-100);
+    width: auto;
     cursor: pointer;
 }
 
@@ -1536,6 +1536,8 @@ form.search button:hover {
     padding: 1em 1.25em;
     border-top: 1px solid var(--border-color);
     color: var(--dark-color);
+    gap: 1em;
+    align-items: flex-start;
 }
 
 .products .collapse .has-child>a::before {
@@ -1578,13 +1580,129 @@ form.search button:hover {
     display: flex;
 }
 
-/* 08. signle page ----------------
-* 
-----------------*/
+.products .collapse .expand>a::before {
+    content: '-';
+}
 
 /* 08. signle page ----------------
-* 
+* Product Review Form
 ----------------*/
+.products .reviews h4 {
+    font-size: 2em;
+    color: var(--light-text-color);
+    padding-top: 1em;
+    margin: 1em 0 0.5em;
+    border-top: 1px solid var(--border-color);
+}
+
+.products .review-block {
+    color: initial;
+}
+
+.products .review-block-head>a {
+    display: block;
+    font-size: 1.25em;
+    width: var(--percent-100);
+    margin-top: 1em;
+    text-align: center;
+}
+
+.products .review-block-head .rate-sum {
+    position: relative;
+    font-size: 4em;
+    font-weight: var(--fw7);
+    padding-right: 0.5em;
+}
+
+.products .review-block-head .rate-sum::before {
+    content: '';
+    width: 2px;
+    height: 50px;
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 13px;
+    transform: rotate(22deg);
+    background-color: var(--light-bg-color);
+}
+
+.products .review-block-body .item {
+    gap: 1em;
+    padding-bottom: 2.5em;
+    margin-top: 3.5em;
+}
+
+.products .review-block-body :where(.person, .review-title) {
+    font-weight: var(--fw7);
+    text-transform: uppercase;
+}
+
+.products .review-block-body :where(.review-title, .view-all) {
+    font-size: 1.25em;
+    justify-content: end;
+}
+
+.products .review-block-body .item:not(:last-child) {
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* 08. signle page ----------------
+* product review form
+----------------*/
+.review-form .ratings {
+    flex-wrap: wrap;
+}
+
+.review-form p {
+    font-size: 1.25em;
+    margin-right: 1em;
+}
+
+.review-form .rate-this input {
+    display: none;
+}
+
+.review-form .rate-this label {
+    float: right;
+    font-size: 2em;
+    color: var(--secendary-dark-color);
+}
+
+.rate-this>input:checked~label,
+.rate-this:not(:checked)>label:hover,
+.rate-this:not(:checked)>label:hover~label {
+    color: #f1c40c;
+}
+
+.rate-this>input:checked~label:hover,
+.rate-this>input:checked~label:hover,
+.rate-this>label:hover~input:checked~label,
+.rate-this>input:checked~label:hover~label {
+    color: #ffed85;
+}
+
+.review-form form {
+    margin-top: 2.5em;
+}
+
+form p {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2em;
+}
+
+form :where(input, textarea) {
+    line-height: 1;
+    padding: 1em;
+    border: 1px solid var(--border-color);
+    outline: 0;
+}
+
+form label {
+    font-weight: var(--fw5);
+    margin-bottom: 0.5em;
+    text-transform: uppercase;
+}
 
 /* 08. signle page ----------------
 * 
@@ -1662,6 +1780,12 @@ form.search button:hover {
     .products.one .row {
         flex: 0 0 50%;
         width: 50%;
+    }
+
+    .products.one .is_sticky,
+    .is_sticky {
+        position: sticky;
+        top: 2em;
     }
 }
 
@@ -1891,5 +2015,9 @@ form.search button:hover {
 
     #page.showdpt .dpt-menu {
         display: block;
+    }
+
+    .products.one .flexwrap>.row:last-child>.item {
+        padding-left: 2em;
     }
 }
