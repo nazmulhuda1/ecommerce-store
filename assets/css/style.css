@@ -867,6 +867,7 @@ form.search button:hover {
     right: 0;
     bottom: 0;
     opacity: .6;
+    z-index: -1;
 }
 
 .products .discount span {
@@ -1102,7 +1103,7 @@ form.search button:hover {
     margin-top: 2em;
 }
 
-/* 05. footers ------------------
+/* 06. footers ------------------
 *   a.newslatter
 ---------------------- */
 .newsletter {
@@ -1130,7 +1131,7 @@ form.search button:hover {
     width: var(--percent-100);
 }
 
-/* 05. footers ------------------
+/* 06. footers ------------------
 *   a.widget
 ---------------------- */
 .widgets {
@@ -1175,7 +1176,7 @@ form.search button:hover {
 
 }
 
-/* 06. Menu-bottom ------------------
+/* 07. Menu-bottom ------------------
 *   a.menu bottom
 ---------------------- */
 .menu-bottom {
@@ -1272,9 +1273,334 @@ form.search button:hover {
 }
 
 /* =====================================* 
+*** 8. Single Page ***
 *===================================== */
 
+/* 08. signle page ----------------
+*  a. dpt-menu
+----------------*/
+.home-page .dpt-cat .dpt-trigger,
+.dpt-trigger .ri-close-line,
+.showdpt .dpt-trigger .ri-menu-3-line {
+    display: none;
+}
 
+.showdpt .dpt-trigger .ri-close-line {
+    display: block;
+}
+
+/* 08. signle page ----------------
+*   b. breadcrumb
+----------------*/
+.breadcrumb {
+    font-size: var(--font-small);
+    margin-bottom: 2em;
+}
+
+.breadcrumb li:not(:last-child)::after {
+    content: '/';
+    padding: 0 0.35em;
+}
+
+.breadcrumb li:last-child {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--light-text-color);
+}
+
+/* 08. signle page ----------------
+*   c. product details
+----------------*/
+.products.one .item {
+    flex-direction: column;
+}
+
+.products.one .price .discount {
+    font-size: .7em;
+    font-weight: var(--fw5);
+    line-height: 1;
+    position: absolute;
+    top: 0;
+    bottom: auto;
+    padding: 1em;
+    z-index: 2;
+    background-color: var(--dark-color);
+    color: var(--white-color);
+    border-radius: var(--percent-50);
+    margin: 0.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.products.one :where(.big-image, .small-image) {
+    overflow: hidden;
+}
+
+.products.one .big-image {
+    position: relative;
+    margin-bottom: 1em;
+}
+
+.products.one :where(.big-image, .small-image) img {
+    object-fit: cover;
+    width: var(--percent-100);
+    height: var(--percent-100);
+    display: block;
+}
+
+.products.one .thumbnail-show {
+    position: relative;
+    width: 130px;
+    height: 110px;
+    overflow: hidden;
+    margin: 0 2em 2em 0;
+}
+
+.products :is(.swiper-button-next, .swiper-button-prev) {
+    outline: 0;
+    color: var(--secendary-dark-color);
+    transition: var(--trans-background), transform .3s;
+}
+
+.products .big-image:hover .swiper-button-next {
+    transform: translateX(10px);
+}
+
+.products .big-image:hover .swiper-button-prev {
+    transform: translateX(-10px);
+}
+
+.products :is(.swiper-button-next, .swiper-button-prev)::after {
+    font-size: 1.5em;
+}
+
+.products .big-image:hover :is(.swiper-button-next, .swiper-button-prev) {
+    background: var(--white-color);
+}
+
+/* 08. signle page ----------------
+* Product description
+----------------*/
+.products.one .available {
+    font-size: var(--font-small);
+    font-weight: var(--fw5);
+    padding: 0.5em;
+    margin-right: 1em;
+    border-radius: 3px;
+    color: #10ac84;
+    background: var(--light-bg-color);
+}
+
+.products.one .add-review {
+    color: var(--dark-color);
+}
+
+.products.one .price {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.products.one .price .current {
+    font-size: 2.5em;
+}
+
+.products .variant form {
+    display: flex;
+    font-size: 2.5em;
+}
+
+.products .variant form p {
+    position: relative;
+    margin: 0 0.5em 0.5em;
+}
+
+.products :where(.variant, .actions) .circle {
+    display: block;
+    position: static;
+    top: 0;
+    margin: 0;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.products .variant input {
+    clip: rect(0, 0, 0, 0);
+    overflow: hidden;
+    position: absolute;
+    height: 0;
+    width: 0;
+}
+
+.products .variant label::before {
+    opacity: 1;
+}
+
+.products .variant label[for="cogrey"]::before {
+    background-color: #576574;
+}
+
+.products .variant label[for="coblue"]::before {
+    background-color: #45a0ff;
+}
+
+.products .variant label[for="cogreen"]::before {
+    background-color: #1dd1a1;
+}
+
+.single-product .variant form p input:checked+label {
+    background-color: transparent;
+    border: 2px solid var(--dark-color);
+    color: var(--white-color);
+}
+
+.products .sizes .variant label::before {
+    background-color: var(--white-color);
+}
+
+.products .sizes .variant label span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: var(--percent-100);
+    height: var(--percent-100);
+    font-size: 0.35em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.single-product .sizes .variant form p input:checked+label::before {
+    background-color: var(--dark-color);
+    opacity: 1;
+}
+
+.products .actions {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 2em;
+}
+
+.products .qty-control {
+    width: fit-content;
+    padding: 0.5em;
+    border: 1px solid var(--border-color);
+    margin: 0 2em 2em 0;
+}
+
+.products .actions :where(input, button) {
+    font-size: 1.25em;
+    outline: 0;
+    border: 0;
+}
+
+.products .actions input {
+    width: 50px;
+    text-align: center;
+}
+
+.products .qty-control button::before {
+    background-color: transparent;
+}
+
+.products .actions .button-cat {
+    flex: 1;
+    min-width: 200px;
+}
+
+.products .actions .button-cat button {
+    width: var(--percent-100);
+    cursor: pointer;
+}
+
+.wish-share a {
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    font-weight: var(--fw7);
+    margin: 1em 2em 1em 0;
+    transition: var(--trans-color);
+}
+
+/* 08. signle page ----------------
+* Product Review
+----------------*/
+.products .collapse .has-child>a {
+    position: relative;
+    font-weight: var(--fw7);
+    text-transform: uppercase;
+    padding: 1em 1.25em;
+    border-top: 1px solid var(--border-color);
+    color: var(--dark-color);
+}
+
+.products .collapse .has-child>a::before {
+    position: absolute;
+    content: '+';
+    left: 0;
+}
+
+.products .collapse .content {
+    margin: 0 0 1.5em 2em;
+    font-size: var(--font-small);
+}
+
+.products .collapse .content li span:first-child {
+    min-width: 100px;
+    font-weight: var(--fw7);
+    display: inline-flex;
+    text-transform: uppercase;
+}
+
+.products .collapse table {
+    line-height: 3em;
+}
+
+.products .collapse table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid var(--dark-color);
+}
+
+.products .collapse table thead :where(th, td) {
+    border-bottom: 1px solid var(--border-color);
+    padding-left: 2em;
+}
+
+.products .collapse .content {
+    display: none;
+}
+
+.products .collapse .expand .content {
+    display: flex;
+}
+
+/* 08. signle page ----------------
+* 
+----------------*/
+
+/* 08. signle page ----------------
+* 
+----------------*/
+
+/* 08. signle page ----------------
+* 
+----------------*/
+
+/* 08. signle page ----------------
+* 
+----------------*/
+
+/* 08. signle page ----------------
+* 
+----------------*/
+
+/* 08. signle page ----------------
+* 
+----------------*/
 
 
 
@@ -1300,6 +1626,18 @@ form.search button:hover {
     .widgets .row {
         flex: 0 0 50%;
     }
+
+    .products.one .big-image {
+        margin-bottom: 2em;
+    }
+
+    .products.one .image-show {
+        height: 680px;
+    }
+
+    .products.one .thumbnail-show {
+        height: 160px;
+    }
 }
 
 @media screen and (min-width:768px) {
@@ -1319,6 +1657,11 @@ form.search button:hover {
 
     .product-categories .row {
         flex: 0 0 50%;
+    }
+
+    .products.one .row {
+        flex: 0 0 50%;
+        width: 50%;
     }
 }
 
@@ -1444,6 +1787,7 @@ form.search button:hover {
         border: 1px solid var(--border-color);
         border-top: 0;
         border-bottom: 0;
+        background-color: var(--white-color);
     }
 
     .dpt-menu>ul>li>a {
@@ -1535,5 +1879,17 @@ form.search button:hover {
         display: flex;
         justify-content: space-between;
         align-items: center;
+    }
+
+
+    /* ==============
+     * SINGLE PAGE
+    ================ */
+    #page:not(.home-page) .dpt-menu {
+        display: none;
+    }
+
+    #page.showdpt .dpt-menu {
+        display: block;
     }
 }
